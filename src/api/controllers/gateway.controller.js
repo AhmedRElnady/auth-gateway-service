@@ -20,7 +20,7 @@ router.post('/signup', validate(), async (req, res, next) => {
             password: await bcrypt.hashPassword(req.body.password),
             role: req.body.role
         });
-
+    
         GWUserID = createdUser.id;
         GWuserRole = createdUser.role;
         const { MSURL, MSPrefix } = await _getMSURLAndPrefix(GWuserRole);  
@@ -31,7 +31,6 @@ router.post('/signup', validate(), async (req, res, next) => {
             .then(async serviceRes => {
                 console.log("####### response form microService #####", serviceRes.data);
                 
-                // after user registeration in both gateway and the microservice, sign jwt
                 const token = await jwt.signToken({ id: GWUserID, role: GWuserRole });
 
                 res.status(201).json({
@@ -59,7 +58,6 @@ router.post('/login', validate(), async (req, res, next) => {
         /*
             i need to store shopId in jwt, don't save admin permissions in jwt for these reasons:
             so i need to make a request to the service to get user details (shop-admin or customer);
-            
         */
 
        GWUserID = user.id;

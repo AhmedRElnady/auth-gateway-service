@@ -11,37 +11,32 @@ const shopAdminApi = apiAdapter(shopURL);
 
 
 router.post('/shop-admins/:id/approve', authenticate(), (req, res)=> {
-    shopAdminApi.post(req.path)
+    shopAdminApi.post(req.path, {}, { headers: {"x-payload-header": JSON.stringify(req.tokenPayload) }})
         .then(shopAdminRes => {
             res.status(shopAdminRes.status).json({ data: shopAdminRes.data });
-            
         })
 });
 
 router.delete('/shop-admins/:id/approve', authenticate(), (req, res)=> {
-    shopAdminApi.delete(req.path)
+    shopAdminApi.delete(req.path, { headers: {"x-payload-header": JSON.stringify(req.tokenPayload) }})
         .then(shopAdminRes => {
             res.status(shopAdminRes.status).json({ data: shopAdminRes.data });
-            
         })
 });
 
 router.patch('/shop-admins/:id/assign-shop', authenticate(), (req, res)=> {
-    shopAdminApi.patch(req.path, req.body)
+    shopAdminApi.patch(req.path, req.body, { headers: {"x-payload-header": JSON.stringify(req.tokenPayload) }})
         .then(shopAdminRes => {
             res.status(shopAdminRes.status).json({ data: shopAdminRes.data });
-            
         })
 });
 
 router.patch('/shop-admins/:id/roles', authenticate(), (req, res)=> {
-    shopAdminApi.patch(req.path, req.body)
+    shopAdminApi.patch(req.path, req.body, { headers: {"x-payload-header": JSON.stringify(req.tokenPayload) }})
         .then(shopAdminRes => {
             res.status(shopAdminRes.status).json({ data: shopAdminRes.data });
-            
         })
 });
-
 
 
 module.exports = router;
