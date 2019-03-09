@@ -1,7 +1,20 @@
 module.exports = {
-    MSURL: {
-        shop: "http://localhost:4000",
-        shop_admin: "http://localhost:5000",
-        customer: "http://localhost:6000",
+    MS: {
+        shop: {
+            url: "http://localhost:4000",
+            prefix: "shops"
+        }, 
+        shop_admin: {
+            url: "http://localhost:5000",
+            prefix: "shop-admins"
+        },
+        customer: {
+            url: "http://localhost:6000",
+            prefix: "customers"
+        }
+    },
+    token: {
+        secret: 'elnadySecret',
+        expiresIn: 60000
     }
 }
