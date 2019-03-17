@@ -5,7 +5,6 @@ const tokenSecret = config.get('token.secret');
 function authenticate() {
     return (req, res, next) => {
         (async () => {
-            console.log(">>> msg from authorize middleware >>>");
             const authorizationHeader = req.headers['authorization'];
 
             if(!authorizationHeader) {

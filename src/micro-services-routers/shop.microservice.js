@@ -15,10 +15,8 @@ router.get('/shops', authenticate(), (req, res) => {
     shopApi.get(req.path, { headers: { "x-payload-header": JSON.stringify(req.tokenPayload) } })
         .then(shopRes => {
             res.status(shopRes.status).json({msg: shopRes.data});
-
         })
         .catch(err => {
-            console.log("@@@@@ error @@@@", err);
         })
 });
 
