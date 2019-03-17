@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     }, 
     role: {
         type: String,
-        enum: ['SHOP_ADMIN', 'CUSTOMER'],
+        enum: ['SUPER_ADMIN','SHOP_ADMIN', 'CUSTOMER'],
         required: true
     }
 }, {timestamps: true });
