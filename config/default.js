@@ -15,6 +15,6 @@ module.exports = {
     },
     token: {
         secret: 'elnadySecret',
-        expiresIn: 60000
+        expiresIn: '60000'
     }
 }
