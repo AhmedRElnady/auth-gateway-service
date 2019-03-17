@@ -24,15 +24,16 @@ router.delete('/shop-admins/:id/approve', authenticate(), (req, res)=> {
         })
 });
 
-router.patch('/shop-admins/:id/assign-shop', authenticate(), (req, res)=> {
+router.patch('/shop-admins/:id', authenticate(), (req, res)=> {
     shopAdminApi.patch(req.path, req.body, { headers: {"x-payload-header": JSON.stringify(req.tokenPayload) }})
         .then(shopAdminRes => {
             res.status(shopAdminRes.status).json({ data: shopAdminRes.data });
         })
 });
 
-router.patch('/shop-admins/:id/roles', authenticate(), (req, res)=> {
-    shopAdminApi.patch(req.path, req.body, { headers: {"x-payload-header": JSON.stringify(req.tokenPayload) }})
+// refactor 
+router.post('/shop-admins/', authenticate(), (req, res) => {
+    shopAdminApi.post(req.path, req.body , { headers: {"x-payload-header": JSON.stringify(req.tokenPayload) }})
         .then(shopAdminRes => {
             res.status(shopAdminRes.status).json({ data: shopAdminRes.data });
         })
